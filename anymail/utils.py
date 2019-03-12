@@ -328,7 +328,8 @@ def get_content_disposition(mimeobj):
     if value is None:
         return None
     # _splitparam(value)[0].lower() :
-    return str(value).partition(';')[0].strip().lower()
+    from django.utils.encoding import smart_str
+    return smart_str(value).partition(';')[0].strip().lower()
 
 
 def get_anymail_setting(name, default=UNSET, esp_name=None, kwargs=None, allow_bare=False):
